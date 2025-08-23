@@ -36,15 +36,22 @@ final class OrganizeAndMarkCommand: NSObject, XCSourceEditorCommand {
         let prefs = loadPrefs()
         
         var working = lines
+        // 1) Imports: junta y ordena (sin MARK)
         if prefs.sortImports {
-            working = ImportSorter.sortAndHoistAllImports(in: working)
+            working = ImportSorter.hoistAndSortImports(in: working)
         }
+        // 2) Asegura un único MARK de Imports
         if prefs.insertMarks {
-            working = MarkInserter.insertImportsMark(in: working)
+            working = MarkInserter.ensureSingleImportsMark(in: working)
         }
-        
+        // 3) Formato mínimo: expandir tipos de una línea
+        working = TypeBodyExpander.expandOneLineTypeBodies(in: working)
+        // 4) MARCAR constantes dentro de tipos
+        if prefs.insertMarks {
+            working = TypeMemberMarker.insertConstantsMark(in: working)
+        }
         invocation.buffer.lines.removeAllObjects()
-        working.forEach { invocation.buffer.lines.add($0) }
+        invocation.buffer.lines.setArray(working)
     }
     
     private func loadPrefs() -> Prefs {
