@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		228556DA2E59BF2D00B402E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228556D92E59BF2D00B402E5 /* Cocoa.framework */; };
-		228556DC2E59BF2D00B402E5 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228556DB2E59BF2D00B402E5 /* XcodeKit.framework */; };
 		228556E62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 228556D72E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		228557222E59C1BA00B402E5 /* PMM_CodeOrganizerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 228557212E59C1BA00B402E5 /* PMM_CodeOrganizerCore */; };
 		228557242E59C1EB00B402E5 /* PMM_CodeOrganizerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 228557232E59C1EB00B402E5 /* PMM_CodeOrganizerCore */; };
+		22C75F6D2E5A230C006500FC /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228556DB2E59BF2D00B402E5 /* XcodeKit.framework */; };
+		22C75F6E2E5A230C006500FC /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 228556DB2E59BF2D00B402E5 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,17 @@
 				228556E62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C75F6F2E5A230C006500FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				22C75F6E2E5A230C006500FC /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -107,9 +119,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C75F6D2E5A230C006500FC /* XcodeKit.framework in Frameworks */,
 				228557242E59C1EB00B402E5 /* PMM_CodeOrganizerCore in Frameworks */,
 				228556DA2E59BF2D00B402E5 /* Cocoa.framework in Frameworks */,
-				228556DC2E59BF2D00B402E5 /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +191,7 @@
 				228556D32E59BF2D00B402E5 /* Sources */,
 				228556D42E59BF2D00B402E5 /* Frameworks */,
 				228556D52E59BF2D00B402E5 /* Resources */,
+				22C75F6F2E5A230C006500FC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -411,8 +424,9 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pedrommoreno.CodeOrganizer.PMM-CodeOrganizerExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
@@ -439,8 +453,9 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pedrommoreno.CodeOrganizer.PMM-CodeOrganizerExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
@@ -587,6 +602,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -614,6 +630,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
