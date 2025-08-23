@@ -12,7 +12,7 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).OrganizeAndMarkCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>com.pedrommoreno.CodeOrganizer.organize</string>
+					<string>com.pedrommoreno.PMM-CodeOrganizer.organize</string>
 					<key>XCSourceEditorCommandName</key>
 					<string>Apply: Organize &amp; Mark</string>
 				</dict>
@@ -20,7 +20,7 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).AnnotateSuggestionsCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>com.pedrommoreno.CodeOrganizer.anotate</string>
+					<string>com.pedrommoreno.PMM-CodeOrganizer.annotate</string>
 					<key>XCSourceEditorCommandName</key>
 					<string>Dry-Run: Annotate Suggestions</string>
 				</dict>

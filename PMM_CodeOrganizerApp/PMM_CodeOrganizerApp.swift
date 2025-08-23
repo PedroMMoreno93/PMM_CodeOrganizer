@@ -11,7 +11,8 @@ import SwiftUI
 struct PMM_CodeOrganizerApp: App {
     var body: some Scene {
         WindowGroup {
-            
+            PreferencesView()
         }
+        .windowResizability(.contentSize)
     }
 }
