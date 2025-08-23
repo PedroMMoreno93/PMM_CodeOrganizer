@@ -1,0 +1,763 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		228556DA2E59BF2D00B402E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228556D92E59BF2D00B402E5 /* Cocoa.framework */; };
+		228556DC2E59BF2D00B402E5 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228556DB2E59BF2D00B402E5 /* XcodeKit.framework */; };
+		228556E62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 228556D72E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		228557222E59C1BA00B402E5 /* PMM_CodeOrganizerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 228557212E59C1BA00B402E5 /* PMM_CodeOrganizerCore */; };
+		228557242E59C1EB00B402E5 /* PMM_CodeOrganizerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 228557232E59C1EB00B402E5 /* PMM_CodeOrganizerCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		228556E42E59BF2D00B402E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2288D4D62E59BE99003FE4E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 228556D62E59BF2D00B402E5;
+			remoteInfo = PMM_CodeOrganizerExtension;
+		};
+		2288D4ED2E59BE9C003FE4E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2288D4D62E59BE99003FE4E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2288D4DD2E59BE99003FE4E6;
+			remoteInfo = PMM_CodeOrganizer;
+		};
+		2288D4F72E59BE9C003FE4E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2288D4D62E59BE99003FE4E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2288D4DD2E59BE99003FE4E6;
+			remoteInfo = PMM_CodeOrganizer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		228556E72E59BF2D00B402E5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				228556E62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		228556D72E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PMM_CodeOrganizerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		228556D92E59BF2D00B402E5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		228556DB2E59BF2D00B402E5 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
+		2288D4DE2E59BE99003FE4E6 /* PMM_CodeOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMM_CodeOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2288D4EC2E59BE9C003FE4E6 /* PMM_CodeOrganizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMM_CodeOrganizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2288D4F62E59BE9C003FE4E6 /* PMM_CodeOrganizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMM_CodeOrganizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		228556EA2E59BF2D00B402E5 /* Exceptions for "PMM_CodeOrganizerExtension" folder in "PMM_CodeOrganizerExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 228556D62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */;
+		};
+		2285571B2E59C09C00B402E5 /* Exceptions for "Packages" folder in "PMM_CodeOrganizer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				PMM_CodeOrganizerCore,
+			);
+			target = 2288D4DD2E59BE99003FE4E6 /* PMM_CodeOrganizer */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		228556DD2E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				228556EA2E59BF2D00B402E5 /* Exceptions for "PMM_CodeOrganizerExtension" folder in "PMM_CodeOrganizerExtension" target */,
+			);
+			path = PMM_CodeOrganizerExtension;
+			sourceTree = "<group>";
+		};
+		228556EC2E59C00100B402E5 /* Packages */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2285571B2E59C09C00B402E5 /* Exceptions for "Packages" folder in "PMM_CodeOrganizer" target */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		2288D4E02E59BE99003FE4E6 /* PMM_CodeOrganizerApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PMM_CodeOrganizerApp;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		228556D42E59BF2D00B402E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				228557242E59C1EB00B402E5 /* PMM_CodeOrganizerCore in Frameworks */,
+				228556DA2E59BF2D00B402E5 /* Cocoa.framework in Frameworks */,
+				228556DC2E59BF2D00B402E5 /* XcodeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4DB2E59BE99003FE4E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				228557222E59C1BA00B402E5 /* PMM_CodeOrganizerCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4E92E59BE9C003FE4E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4F32E59BE9C003FE4E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		228556D82E59BF2D00B402E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				228556D92E59BF2D00B402E5 /* Cocoa.framework */,
+				228556DB2E59BF2D00B402E5 /* XcodeKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2288D4D52E59BE99003FE4E6 = {
+			isa = PBXGroup;
+			children = (
+				228556EC2E59C00100B402E5 /* Packages */,
+				2288D4E02E59BE99003FE4E6 /* PMM_CodeOrganizerApp */,
+				228556DD2E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */,
+				228556D82E59BF2D00B402E5 /* Frameworks */,
+				2288D4DF2E59BE99003FE4E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2288D4DF2E59BE99003FE4E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2288D4DE2E59BE99003FE4E6 /* PMM_CodeOrganizer.app */,
+				2288D4EC2E59BE9C003FE4E6 /* PMM_CodeOrganizerTests.xctest */,
+				2288D4F62E59BE9C003FE4E6 /* PMM_CodeOrganizerUITests.xctest */,
+				228556D72E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		228556D62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 228556EB2E59BF2D00B402E5 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizerExtension" */;
+			buildPhases = (
+				228556D32E59BF2D00B402E5 /* Sources */,
+				228556D42E59BF2D00B402E5 /* Frameworks */,
+				228556D52E59BF2D00B402E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				228556DD2E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */,
+			);
+			name = PMM_CodeOrganizerExtension;
+			packageProductDependencies = (
+				228557232E59C1EB00B402E5 /* PMM_CodeOrganizerCore */,
+			);
+			productName = PMM_CodeOrganizerExtension;
+			productReference = 228556D72E59BF2D00B402E5 /* PMM_CodeOrganizerExtension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
+		2288D4DD2E59BE99003FE4E6 /* PMM_CodeOrganizer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2288D5002E59BE9C003FE4E6 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizer" */;
+			buildPhases = (
+				2288D4DA2E59BE99003FE4E6 /* Sources */,
+				2288D4DB2E59BE99003FE4E6 /* Frameworks */,
+				2288D4DC2E59BE99003FE4E6 /* Resources */,
+				228556E72E59BF2D00B402E5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				228556E52E59BF2D00B402E5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				228556EC2E59C00100B402E5 /* Packages */,
+				2288D4E02E59BE99003FE4E6 /* PMM_CodeOrganizerApp */,
+			);
+			name = PMM_CodeOrganizer;
+			packageProductDependencies = (
+				228557212E59C1BA00B402E5 /* PMM_CodeOrganizerCore */,
+			);
+			productName = PMM_CodeOrganizer;
+			productReference = 2288D4DE2E59BE99003FE4E6 /* PMM_CodeOrganizer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2288D4EB2E59BE9C003FE4E6 /* PMM_CodeOrganizerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2288D5032E59BE9C003FE4E6 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizerTests" */;
+			buildPhases = (
+				2288D4E82E59BE9C003FE4E6 /* Sources */,
+				2288D4E92E59BE9C003FE4E6 /* Frameworks */,
+				2288D4EA2E59BE9C003FE4E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2288D4EE2E59BE9C003FE4E6 /* PBXTargetDependency */,
+			);
+			name = PMM_CodeOrganizerTests;
+			packageProductDependencies = (
+			);
+			productName = PMM_CodeOrganizerTests;
+			productReference = 2288D4EC2E59BE9C003FE4E6 /* PMM_CodeOrganizerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2288D4F52E59BE9C003FE4E6 /* PMM_CodeOrganizerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2288D5062E59BE9C003FE4E6 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizerUITests" */;
+			buildPhases = (
+				2288D4F22E59BE9C003FE4E6 /* Sources */,
+				2288D4F32E59BE9C003FE4E6 /* Frameworks */,
+				2288D4F42E59BE9C003FE4E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2288D4F82E59BE9C003FE4E6 /* PBXTargetDependency */,
+			);
+			name = PMM_CodeOrganizerUITests;
+			packageProductDependencies = (
+			);
+			productName = PMM_CodeOrganizerUITests;
+			productReference = 2288D4F62E59BE9C003FE4E6 /* PMM_CodeOrganizerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2288D4D62E59BE99003FE4E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					228556D62E59BF2D00B402E5 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					2288D4DD2E59BE99003FE4E6 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					2288D4EB2E59BE9C003FE4E6 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 2288D4DD2E59BE99003FE4E6;
+					};
+					2288D4F52E59BE9C003FE4E6 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 2288D4DD2E59BE99003FE4E6;
+					};
+				};
+			};
+			buildConfigurationList = 2288D4D92E59BE99003FE4E6 /* Build configuration list for PBXProject "PMM_CodeOrganizer" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2288D4D52E59BE99003FE4E6;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				228557202E59C1BA00B402E5 /* XCLocalSwiftPackageReference "Packages/PMM_CodeOrganizerCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2288D4DF2E59BE99003FE4E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2288D4DD2E59BE99003FE4E6 /* PMM_CodeOrganizer */,
+				2288D4EB2E59BE9C003FE4E6 /* PMM_CodeOrganizerTests */,
+				2288D4F52E59BE9C003FE4E6 /* PMM_CodeOrganizerUITests */,
+				228556D62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		228556D52E59BF2D00B402E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4DC2E59BE99003FE4E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4EA2E59BE9C003FE4E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4F42E59BE9C003FE4E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		228556D32E59BF2D00B402E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4DA2E59BE99003FE4E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4E82E59BE9C003FE4E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2288D4F22E59BE9C003FE4E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		228556E52E59BF2D00B402E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 228556D62E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */;
+			targetProxy = 228556E42E59BF2D00B402E5 /* PBXContainerItemProxy */;
+		};
+		2288D4EE2E59BE9C003FE4E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2288D4DD2E59BE99003FE4E6 /* PMM_CodeOrganizer */;
+			targetProxy = 2288D4ED2E59BE9C003FE4E6 /* PBXContainerItemProxy */;
+		};
+		2288D4F82E59BE9C003FE4E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2288D4DD2E59BE99003FE4E6 /* PMM_CodeOrganizer */;
+			targetProxy = 2288D4F72E59BE9C003FE4E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		228556E82E59BF2D00B402E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PMM_CodeOrganizerExtension/PMM_CodeOrganizerExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PMM_CodeOrganizerExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PMM_CodeOrganizerExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		228556E92E59BF2D00B402E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PMM_CodeOrganizerExtension/PMM_CodeOrganizerExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PMM_CodeOrganizerExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PMM_CodeOrganizerExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2288D4FE2E59BE9C003FE4E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2288D4FF2E59BE9C003FE4E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		2288D5012E59BE9C003FE4E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PMM_CodeOrganizerApp/PMM_CodeOrganizer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2288D5022E59BE9C003FE4E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PMM_CodeOrganizerApp/PMM_CodeOrganizer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedrommoreno.CodeOrganizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2288D5042E59BE9C003FE4E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pedrommoreno.CodeOrganizer.PMM-CodeOrganizerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PMM_CodeOrganizer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PMM_CodeOrganizer";
+			};
+			name = Debug;
+		};
+		2288D5052E59BE9C003FE4E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pedrommoreno.CodeOrganizer.PMM-CodeOrganizerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PMM_CodeOrganizer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PMM_CodeOrganizer";
+			};
+			name = Release;
+		};
+		2288D5072E59BE9C003FE4E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pedrommoreno.CodeOrganizer.PMM-CodeOrganizerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = PMM_CodeOrganizer;
+			};
+			name = Debug;
+		};
+		2288D5082E59BE9C003FE4E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DCVXS4R2VN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pedrommoreno.CodeOrganizer.PMM-CodeOrganizerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = PMM_CodeOrganizer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		228556EB2E59BF2D00B402E5 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				228556E82E59BF2D00B402E5 /* Debug */,
+				228556E92E59BF2D00B402E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2288D4D92E59BE99003FE4E6 /* Build configuration list for PBXProject "PMM_CodeOrganizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2288D4FE2E59BE9C003FE4E6 /* Debug */,
+				2288D4FF2E59BE9C003FE4E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2288D5002E59BE9C003FE4E6 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2288D5012E59BE9C003FE4E6 /* Debug */,
+				2288D5022E59BE9C003FE4E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2288D5032E59BE9C003FE4E6 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2288D5042E59BE9C003FE4E6 /* Debug */,
+				2288D5052E59BE9C003FE4E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2288D5062E59BE9C003FE4E6 /* Build configuration list for PBXNativeTarget "PMM_CodeOrganizerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2288D5072E59BE9C003FE4E6 /* Debug */,
+				2288D5082E59BE9C003FE4E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		228557202E59C1BA00B402E5 /* XCLocalSwiftPackageReference "Packages/PMM_CodeOrganizerCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/PMM_CodeOrganizerCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		228557212E59C1BA00B402E5 /* PMM_CodeOrganizerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PMM_CodeOrganizerCore;
+		};
+		228557232E59C1EB00B402E5 /* PMM_CodeOrganizerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PMM_CodeOrganizerCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2288D4D62E59BE99003FE4E6 /* Project object */;
+}
