@@ -13,13 +13,13 @@ import XcodeKit
 final class OrganizeAndMarkCommand: NSObject, XCSourceEditorCommand {
     private let suite = "com.pedrommoreno.CodeOrganizer"
     private let key = "prefs"
-
-    struct Prefs: Decodable {
-        var sortImports: Bool
-        var insertMarks: Bool
-    }
-
-    
+//
+//    struct Prefs: Decodable {
+//        var sortImports: Bool
+//        var insertMarks: Bool
+//    }
+//
+//    
     func perform(
         with invocation: XCSourceEditorCommandInvocation,
         completionHandler: @escaping (Error?) -> Void
@@ -36,31 +36,55 @@ final class OrganizeAndMarkCommand: NSObject, XCSourceEditorCommand {
         let prefs = loadPrefs()
         
         var working = lines
-        // 1) Imports: junta y ordena (sin MARK)
+
+        // 1) Imports
         if prefs.sortImports {
-            working = ImportSorter.hoistAndSortImports(in: working)
+            working = ImportSorter.hoistAndSortImports(in: working) // no añade MARK
         }
-        // 2) Asegura un único MARK de Imports
         if prefs.insertMarks {
-            working = MarkInserter.ensureSingleImportsMark(in: working)
+            working = MarkInserter.ensureSingleImportsMark(in: working,
+                                                           title: prefs.titles.imports,
+                                                           style: prefs.markStyle)
         }
-        // 3) Formato mínimo: expandir tipos de una línea
+
+        // 2) Expandir tipos de una línea
         working = TypeBodyExpander.expandOneLineTypeBodies(in: working)
-        // 4) MARCAR constantes dentro de tipos
-        if prefs.insertMarks {
-            working = TypeMemberMarker.insertConstantsMark(in: working)
+
+        // 3) Reordenar + marcar miembros dentro de tipos/extensiones
+        if prefs.reorderMembers {
+            working = TypeMemberOrganizer.reorderAndMark(in: working,
+                                                         style: prefs.markStyle,
+                                                         titles: prefs.titles)
+        } else if prefs.insertMarks {
+            working = TypeMemberMarker.insertMemberMarks(in: working,
+                                                         style: prefs.markStyle,
+                                                         titles: prefs.titles)
         }
-        invocation.buffer.lines.removeAllObjects()
+
+        // 4) Reordenado top-level: extensiones al final
+        if prefs.reorderTopLevel {
+            working = TopLevelReorderer.moveExtensionsToBottom(in: working)
+        }
+
+        // 5) MARK de cada extension
+        if prefs.insertMarks {
+            working = TopLevelMarker.insertExtensionMarks(in: working, style: prefs.markStyle)
+        }
+
+        // 6) Normalizar espacios (clave para tu caso)
+        working = WhitespaceNormalizer.removeBlankLineAfterMark(working)
+        working = WhitespaceNormalizer.collapseBlankLines(working)
+
         invocation.buffer.lines.setArray(working)
     }
     
-    private func loadPrefs() -> Prefs {
+    private func loadPrefs() -> OrganizerPrefs {
         let ud = UserDefaults(suiteName: suite)
         if let data = ud?.data(forKey: key),
            let decoded = try? JSONDecoder().decode(OrganizerPrefs.self, from: data) {
-            return Prefs(sortImports: decoded.sortImports, insertMarks: decoded.insertMarks)
+            return decoded
         }
-        return Prefs(sortImports: true, insertMarks: true)
+        return OrganizerPrefs(sortImports: true, insertMarks: true)
     }
     
 }
