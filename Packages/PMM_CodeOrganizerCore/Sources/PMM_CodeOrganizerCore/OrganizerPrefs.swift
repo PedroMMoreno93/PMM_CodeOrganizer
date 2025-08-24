@@ -6,27 +6,31 @@
 //
 import Foundation
 
-public struct OrganizerPrefs: Codable {
-    public var sortImports: Bool
-    public var insertMarks: Bool
-    public var reorderMembers: Bool
-    public var reorderTopLevel: Bool
-    public var maxFunctionLines: Int
-    public var maxTypeLines: Int
-    
-    public init(
-        sortImports: Bool = true,
-        insertMarks: Bool = true,
-        reorderMembers: Bool = false,
-        reorderTopLevel: Bool = false,
-        maxFunctionLines: Int = 80,
-        maxTypeLines: Int = 400
-    ) {
-        self.sortImports = sortImports
-        self.insertMarks = insertMarks
-        self.reorderMembers = reorderMembers
-        self.reorderTopLevel = reorderTopLevel
-        self.maxFunctionLines = maxFunctionLines
-        self.maxTypeLines = maxTypeLines
-    }
+public enum MarkStyle: String, Codable { case noDash, withDash
+    var prefix: String { self == .withDash ? "// MARK: - " : "// MARK: " }
+}
+
+public struct OrganizerPrefs: Codable, Equatable {
+    public var sortImports: Bool = true
+    public var insertMarks: Bool = true
+    public var reorderMembers: Bool = false
+    public var reorderTopLevel: Bool = false
+    public var maxFunctionLines: Int = 80
+    public var maxTypeLines: Int = 400
+    public var markStyle: MarkStyle = .noDash
+    public var titles = MarkTitles()           // 👈 custom titles
+
+    public init() {}
+}
+
+public struct MarkTitles: Codable, Equatable {
+    public var imports = "Imports"
+    public var constants = "Constants"
+    public var variables = "Variables"
+    public var computed = "Computed"
+    public var `initTitle` = "Init"
+    public var body = "Body"
+    public var publicMethods = "Public Methods"
+    public var privateMethods = "Private Methods"
+    public var nestedPrefix = ""               // i.e. "" → “// MARK: FooType”
 }
