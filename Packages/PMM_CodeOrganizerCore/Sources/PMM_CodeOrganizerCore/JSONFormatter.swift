@@ -62,53 +62,50 @@ public enum JSONFormatter {
         var stringStart: (line: Int, column: Int)? = nil
         var escaped = false
 
-        func advance(_ ch: Character) {
-            if ch == "\n" { line += 1; col = 0 } else { col += 1 }
-        }
+        func advance(_ ch: Character) { if ch == "\n" { line += 1; col = 0 } else { col += 1 } }
 
         for ch in text {
             if inString {
-                if escaped {
-                    escaped = false
-                } else if ch == "\\" {
-                    escaped = true
-                } else if ch == "\"" {
-                    inString = false
-                    stringStart = nil
-                }
-                advance(ch)
-                continue
+                if escaped { escaped = false }
+                else if ch == "\\" { escaped = true }
+                else if ch == "\"" { inString = false; stringStart = nil }
+                advance(ch); continue
             }
-
             switch ch {
-            case "\"":
-                inString = true
-                stringStart = (line, col)
-            case "{":
-                stack.append(("}", line, col))
-            case "[":
-                stack.append(("]", line, col))
+            case "\"": inString = true; stringStart = (line, col)
+            case "{": stack.append(("}", line, col))
+            case "[": stack.append(("]", line, col))
             case "}", "]":
                 if stack.isEmpty || stack.last!.expected != ch {
                     return ParseIssue(line: line, column: col, message: "Cierre '\(ch)' sin apertura correspondiente")
-                } else {
-                    _ = stack.popLast()
-                }
-            default:
-                break
+                } else { _ = stack.popLast() }
+            default: break
             }
             advance(ch)
         }
 
+        // EOF alcanzado
         if inString, let s = stringStart {
             return ParseIssue(line: s.line, column: s.column, message: "Cadena sin cerrar")
         }
         if let unclosed = stack.last {
-            let exp = unclosed.expected == "}" ? "}" : "]"
-            return ParseIssue(line: unclosed.line, column: unclosed.column, message: "Falta cerrar '\(exp)'")
+            // ✅ En vez de devolver la posición de APERTURA, señalamos el EOF como sitio donde falta cerrar
+            let eof = eofPosition(for: text) // (línea, col) del último carácter
+            let missing = unclosed.expected
+            let cdesc = missing == "}" ? "}" : "]"
+            return ParseIssue(line: eof.line, column: eof.col, message: "Falta cerrar '\(cdesc)'")
         }
-        return nil // no pudimos precisar; nos quedamos con el error genérico del parser
+        return nil
     }
+
+    private static func eofPosition(for text: String) -> (line: Int, col: Int) {
+        var line = 0, col = 0
+        for ch in text {
+            if ch == "\n" { line += 1; col = 0 } else { col += 1 }
+        }
+        return (line, col)
+    }
+
 
     // MARK: - Inserción de warning
 
