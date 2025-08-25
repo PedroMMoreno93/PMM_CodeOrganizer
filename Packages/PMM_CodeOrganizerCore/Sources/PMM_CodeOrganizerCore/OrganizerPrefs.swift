@@ -9,14 +9,39 @@ import Foundation
 public enum MarkStyle: String, Codable { case noDash, withDash
     var prefix: String { self == .withDash ? "// MARK: - " : "// MARK: " }
 }
+/*
+ public struct OrganizerPrefs: Codable, Equatable {
 
+     public var maxFunctionLines: Int = 80
+     public var maxTypeLines: Int = 400
+
+     // 👇 para el motor de sugerencias
+     public var maxFileLines: Int = 1200
+     public var maxTopLevelTypes: Int = 2
+     public var maxParamsPerFunc: Int = 5
+     public var maxComplexityTokens: Int = 12
+
+     public var markStyle: MarkStyle = .noDash
+     public var titles = MarkTitles()
+
+     public init() {}
+ }
+
+ */
 public struct OrganizerPrefs: Codable, Equatable {
     public var sortImports: Bool = true
     public var insertMarks: Bool = true
-    public var reorderMembers: Bool = true         // 👈 actívalo
-    public var reorderTopLevel: Bool = true        // 👈 actívalo
-    public var maxFunctionLines: Int = 80
-    public var maxTypeLines: Int = 400
+    public var reorderMembers: Bool = true
+    public var reorderTopLevel: Bool = true
+    
+    public var maxFunctionLines: Int
+    public var maxTypeLines: Int
+    
+    public var maxFileLines: Int = 1200
+    public var maxTopLevelTypes: Int = 2
+    public var maxParamsPerFunc: Int = 5
+    public var maxComplexityTokens: Int = 12
+    
     public var markStyle: MarkStyle = .noDash
     public var titles = MarkTitles()
     
@@ -27,6 +52,10 @@ public struct OrganizerPrefs: Codable, Equatable {
         reorderTopLevel: Bool = true,
         maxFunctionLines: Int = 80,
         maxTypeLines: Int = 400,
+        maxFileLines: Int = 1200,
+        maxTopLevelTypes: Int = 2,
+        maxParamsPerFunc: Int = 5,
+        maxComplexityTokens: Int = 12,
         markStyle: MarkStyle = .noDash,
         titles: MarkTitles = MarkTitles()
     ) {
@@ -36,6 +65,10 @@ public struct OrganizerPrefs: Codable, Equatable {
         self.reorderTopLevel = reorderTopLevel
         self.maxFunctionLines = maxFunctionLines
         self.maxTypeLines = maxTypeLines
+        self.maxFileLines = maxFileLines
+        self.maxTopLevelTypes = maxTopLevelTypes
+        self.maxParamsPerFunc = maxParamsPerFunc
+        self.maxComplexityTokens = maxComplexityTokens
         self.markStyle = markStyle
         self.titles = titles
     }
