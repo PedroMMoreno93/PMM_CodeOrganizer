@@ -16,7 +16,7 @@ final class ImportSorterTests: XCTestCase {
             "\n",
             "struct A {}\n"
         ]
-        let out = ImportSorter.sortImports(in: input)
+        let out = ImportSorter.hoistAndSortImports(in: input)
         XCTAssertEqual(out[0], "import Foundation\n")
         XCTAssertEqual(out[1], "import SwiftUI\n")
     }
