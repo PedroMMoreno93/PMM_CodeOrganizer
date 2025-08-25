@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "66F0B88B-E881-4856-8FBB-6BD6F9C17FE4",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "PMM_CodeOrganizerCoreTests",
+        "name" : "PMM_CodeOrganizerCoreTests"
+      }
+    }
+  ],
+  "version" : 1
+}
