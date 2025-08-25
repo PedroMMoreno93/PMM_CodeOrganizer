@@ -24,6 +24,14 @@
 					<key>XCSourceEditorCommandName</key>
 					<string>Dry-Run: Annotate Suggestions</string>
 				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).JSONFormatterCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>com.pedrommoreno.PMM-CodeOrganizer.json.format</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>JSON: Pretty Format</string>
+				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>

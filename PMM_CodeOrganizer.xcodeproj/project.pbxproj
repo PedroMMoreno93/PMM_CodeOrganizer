@@ -71,6 +71,7 @@
 		2288D4DE2E59BE99003FE4E6 /* PMM_CodeOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMM_CodeOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2288D4EC2E59BE9C003FE4E6 /* PMM_CodeOrganizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMM_CodeOrganizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2288D4F62E59BE9C003FE4E6 /* PMM_CodeOrganizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMM_CodeOrganizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22ED3E2D2E5CEDCC0079B0AF /* PMM_CodeOrganizerCore.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = PMM_CodeOrganizerCore.xctestplan; path = Packages/PMM_CodeOrganizerCore/PMM_CodeOrganizerCore.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -162,6 +163,7 @@
 		2288D4D52E59BE99003FE4E6 = {
 			isa = PBXGroup;
 			children = (
+				22ED3E2D2E5CEDCC0079B0AF /* PMM_CodeOrganizerCore.xctestplan */,
 				228556EC2E59C00100B402E5 /* Packages */,
 				2288D4E02E59BE99003FE4E6 /* PMM_CodeOrganizerApp */,
 				228556DD2E59BF2D00B402E5 /* PMM_CodeOrganizerExtension */,

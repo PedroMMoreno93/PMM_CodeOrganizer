@@ -1,0 +1,2 @@
+{   "users":[{"id":1,"name":"Ana","roles":["admin","dev"],"active":true,"meta":{"lastLogin":"2025-08-20T12:34:56Z","notes":null}}, { "id" : 2 , "name":"Luis" , "roles" : [ "qa" ] , "active": false , "meta": { "lastLogin" : "2025-08-15T08:00:00Z" , "notes":"Tiene \"permiso\" temporal" } }  ],
+ "count":2,   "version":"1.0" }

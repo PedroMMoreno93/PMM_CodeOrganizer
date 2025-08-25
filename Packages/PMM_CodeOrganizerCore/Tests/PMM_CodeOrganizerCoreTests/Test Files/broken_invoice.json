@@ -1,0 +1,12 @@
+{
+  "invoiceId": 12345,
+  "client": {
+    "name": "Acme S.A.",
+    "address": "C/ Gran Vía 1"
+  },
+  "items": [
+    {"sku":"A1","qty":2,"price":19.99},
+    {"sku":"B2","qty":1,"price":9.50}
+  ],
+  "paid": false
+// Falta la llave de cierre aquí
