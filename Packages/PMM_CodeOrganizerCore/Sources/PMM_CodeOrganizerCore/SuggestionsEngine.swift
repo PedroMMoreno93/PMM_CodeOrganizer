@@ -16,7 +16,17 @@ public enum SuggestionsEngine {
     private static let funcRx     = try! NSRegularExpression(pattern: #"^\s*(public|internal|private|fileprivate|open)?\s*(override\s+)?(static\s+)?func\s+\w+\s*\("#, options: [.anchorsMatchLines])
     private static let storedLet  = try! NSRegularExpression(pattern: #"^\s*(public|internal|private|fileprivate)?\s*(static\s+)?let\s+\w+"#, options: [.anchorsMatchLines])
     private static let storedVar  = try! NSRegularExpression(pattern: #"^\s*(public|internal|private|fileprivate)?\s*(static\s+)?var\s+\w+"#, options: [.anchorsMatchLines])
-    private static let markRx     = try! NSRegularExpression(pattern: #"^\s*//\s*SUGERENCIA:"#)
+    private static let markRx       = try! NSRegularExpression(pattern: #"^\s*//\s*SUGERENCIA:"#)
+    // Detecta cualquier línea de sugerencia: "// SUGERENCIA" con o sin "(…)" antes de ":".
+    private static let suggestionLineRx = try! NSRegularExpression(
+        pattern: #"^\s*//\s*SUGERENCIA(?:\s*\([^)]*\))?\s*:"#)
+
+    // Resúmenes (nuevo y legacy)
+    private static let summaryOldRx = try! NSRegularExpression(
+        pattern: #"^\s*//\s*SUGERENCIAS:"#)
+    private static let summaryRx = try! NSRegularExpression(
+        pattern: #"^\s*//\s*RESUMEN DE SUGERENCIAS:"#)
+
 
     public static func analyze(lines: [String], prefs: OrganizerPrefs) -> [Suggestion] {
         var sugs: [Suggestion] = []
@@ -135,31 +145,68 @@ public enum SuggestionsEngine {
 
     // MARK: - Inserción de comentarios
 
-    public static func apply(suggestions: [Suggestion], on lines: [String]) -> [String] {
+    public static func apply(suggestions: [Suggestion],
+                             on lines: [String],
+                             showHUD: Bool = false) -> [String] {
         guard !suggestions.isEmpty else { return lines }
         var out = lines
 
-        // Evitar duplicados: si ya hay una línea SUGERENCIA exactamente encima, no insertes otra
+        // Inserta de mayor a menor índice para no desplazar los siguientes
         let sorted = suggestions.sorted { $0.line > $1.line }
         for s in sorted {
+            let idx = s.line
             let comment = "// SUGERENCIA (\(s.severity.rawValue)): \(s.message)\n"
-            if s.line > 0 && matches(markRx, out[s.line - 1]) { continue }
-            out.insert(comment, at: s.line)
+
+            // ✅ Idempotencia robusta: busca un comentario de sugerencia en una ventana [-1, 0, +1]
+            var existsNearby = false
+            let lo = max(0, idx - 1)
+            let hi = min(out.count - 1, idx + 1)
+            for j in lo...hi {
+                if matches(suggestionLineRx, out[j]) { existsNearby = true; break }
+            }
+            if existsNearby { continue }
+
+            out.insert(comment, at: idx)
         }
 
-        // Resumen al final
+        // Limpia resúmenes previos y añade el nuevo (no cuenta como SUGERENCIA)
+        out = removeExistingSummary(in: out)
+
         let counts = Dictionary(grouping: suggestions, by: { $0.category }).mapValues(\.count)
         var summary: [String] = []
-        summary.append("\n// SUGERENCIAS: \(suggestions.count) en total\n")
+        summary.append("\n// RESUMEN DE SUGERENCIAS: \(suggestions.count) en total\n")
         for (cat, n) in counts.sorted(by: { $0.key.rawValue < $1.key.rawValue }) {
             summary.append("// - \(cat.rawValue): \(n)\n")
         }
         out.append(contentsOf: summary)
+
+        if showHUD {
+            out = insertHUD(out, suggestions: suggestions, counts: counts)
+        }
         return out
     }
 
-    // MARK: - Helpers de análisis
 
+    // MARK: - Helpers de análisis
+    private static func removeExistingSummary(in lines: [String]) -> [String] {
+        var out = lines
+        var i = 0
+        while i < out.count {
+            let l = out[i]
+            if matches(summaryRx, l) || matches(summaryOldRx, l) {
+                var j = i + 1
+                while j < out.count, out[j].trimmingCharacters(in: .whitespaces).hasPrefix("// - ") {
+                    j += 1
+                }
+                out.removeSubrange(i..<j)
+                continue
+            }
+            i += 1
+        }
+        return out
+    }
+
+    
     private struct Block { let start: Int?; let end: Int? }
     private static func sliceTopLevelBlocks(in lines: [String]) -> [Block] {
         var res: [Block] = []
@@ -234,4 +281,86 @@ public enum SuggestionsEngine {
     private static func matches(_ rx: NSRegularExpression, _ line: String) -> Bool {
         rx.firstMatch(in: line, range: NSRange(location: 0, length: (line as NSString).length)) != nil
     }
+
+    
+    // --- HUD helpers ---
+    private static func insertHUD(_ lines: [String],
+                                  suggestions: [Suggestion],
+                                  counts: [SuggestionCategory: Int]) -> [String] {
+        var out = lines
+
+        // Elimina HUD previo si existiera (idempotencia)
+        if let start = out.firstIndex(where: { $0.contains("// PMM_HUD_START") }),
+           let end = out[start..<out.count].firstIndex(where: { $0.contains("// PMM_HUD_END") }) {
+            out.removeSubrange(start...end)
+        }
+
+        // Construye 1-2 líneas compactas
+        let total = suggestions.count
+        let info = suggestions.filter { $0.severity == .info }.count
+        let warns = suggestions.filter { $0.severity == .warning }.count
+
+        // Orden fijo para hacerlo legible
+        let order: [SuggestionCategory] = [
+            .imports, .tooManyTopLevel, .longFile,
+            .longType, .tooManyMembers,
+            .longFunc, .manyParams, .highComplexity, .highNesting,
+            .extensionStoredProp
+        ]
+        let parts = order.compactMap { cat -> String? in
+            guard let n = counts[cat], n > 0 else { return nil }
+            return "\(cat.rawValue)=\(n)"
+        }
+        let line1 = "// PMM_HUD_START\n"
+        let line2 = "// HUD: total=\(total) | info=\(info) | avisos=\(warns)\n"
+        let line3 = parts.isEmpty ? "" : "// " + parts.joined(separator: " · ") + "\n"
+        let line4 = "// PMM_HUD_END\n"
+
+        // Dónde insertarlo: después de imports (si existen) o tras cabecera de comentarios
+        let insertAt = indexAfterImportsOrHeader(in: out)
+        var hud: [String] = [line1, line2]
+        if !line3.isEmpty { hud.append(line3) }
+        hud.append(line4)
+
+        var result = out
+        // Si justo en 'insertAt' ya hay una línea en blanco, no añadimos otra
+        if insertAt > 0, result[insertAt-1].trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false {
+            hud.insert("\n", at: 0) // una línea en blanco antes del HUD si veníamos de código/comentario
+        }
+        result.insert(contentsOf: hud, at: insertAt)
+        // y una línea en blanco después del HUD si lo siguiente no es una línea en blanco
+        let after = insertAt + hud.count
+        if after < result.count,
+           result[after].trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false {
+            result.insert("\n", at: after)
+        }
+        return result
+    }
+
+    // Encuentra índice para insertar HUD
+    private static func indexAfterImportsOrHeader(in lines: [String]) -> Int {
+        // 1) Si hay imports, colócalo justo después del bloque de imports (y su MARK si existe)
+        if let firstImport = lines.firstIndex(where: { $0.trimmingCharacters(in: .whitespaces).hasPrefix("import") || $0.contains("@testable import") }) {
+            var k = firstImport - 1
+            // sube posible MARK de imports
+            while k >= 0, lines[k].trimmingCharacters(in: .whitespaces).hasPrefix("// MARK:") { k -= 1 }
+            var end = firstImport
+            var i = firstImport + 1
+            while i < lines.count, (lines[i].trimmingCharacters(in: .whitespaces).hasPrefix("import") || lines[i].contains("@testable import")) {
+                end = i; i += 1
+            }
+            // salta líneas en blanco inmediatamente después
+            var at = end + 1
+            while at < lines.count, lines[at].trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { at += 1 }
+            return at
+        }
+        // 2) Si no hay imports, colócalo tras cabecera de comentarios inicial
+        var headerEnd = 0
+        while headerEnd < lines.count {
+            let t = lines[headerEnd].trimmingCharacters(in: .whitespaces)
+            if t.hasPrefix("//") || t.isEmpty { headerEnd += 1 } else { break }
+        }
+        return headerEnd
+    }
+
 }

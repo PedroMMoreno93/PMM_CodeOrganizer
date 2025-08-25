@@ -21,6 +21,8 @@ public enum SuggestionCategory: String {
     case manyParams
     case highComplexity
     case longFile
+    case tooManyMembers
+    case highNesting    
 }
 
 public struct Suggestion {

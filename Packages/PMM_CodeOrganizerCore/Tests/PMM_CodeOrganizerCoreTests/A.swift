@@ -46,7 +46,7 @@ extension A {
     }
 
     // MARK: Funcs
-    func super() {
+    func superFunc() {
 
     }
 }
